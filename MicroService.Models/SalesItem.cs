@@ -20,7 +20,7 @@ namespace MicroService.Models
         /// Article Number of the Sale
         /// Alphanumeric up to 32 characters
         /// </summary>
-        [DataMember, MaxLength(32)]
+        [DataMember, Required, MaxLength(32)]
         public string ArticleNumber { get; set; }
 
         /// <summary>

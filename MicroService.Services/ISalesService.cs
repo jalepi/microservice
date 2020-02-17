@@ -10,10 +10,10 @@ namespace MicroService.Services
     {
         Task<string> AddSalesItemAsync(Models.SalesItem salesItem, CancellationToken cancellationToken);
 
-        Task<IEnumerable<Models.TotalRevenuePerDay>> GetTotalRevenuePerDaysAsync(CancellationToken cancellationToken);
+        Task<IEnumerable<Models.TotalRevenuePerDay>> GetTotalRevenuesPerDayAsync(CancellationToken cancellationToken);
 
-        Task<IEnumerable<Models.TotalRevenuePerSalesItem>> GetTotalRevenuePerSalesItemsAsync(CancellationToken cancellationToken);
+        Task<IEnumerable<Models.TotalRevenuePerSalesItem>> GetTotalRevenuesPerSalesItemAsync(CancellationToken cancellationToken);
 
-        Task<IEnumerable<Models.TotalSalesPerDay>> GetTotalSalesPerDaysAsync(CancellationToken cancellationToken);
+        Task<IEnumerable<Models.TotalSalesItemPerDay>> GetTotalSalesItemsPerDayAsync(CancellationToken cancellationToken);
     }
 }

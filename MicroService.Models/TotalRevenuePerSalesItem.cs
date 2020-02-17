@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
-using System.Text;
 
 namespace MicroService.Models
 {
@@ -14,7 +12,7 @@ namespace MicroService.Models
         /// <summary>
         /// Article number of the sales item
         /// </summary>
-        [DataMember]
+        [DataMember, Required, MaxLength(32)]
         public string ArticleNumber { get; set; }
 
         /// <summary>

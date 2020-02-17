@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicroService.Services", "Mi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicroService.Api", "MicroService.Api\MicroService.Api.csproj", "{CA6B2B09-2473-4A9A-B734-D21B239D8152}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroService.Models", "MicroService.Models\MicroService.Models.csproj", "{2C2A437E-6361-4CF8-B362-D418BACBD95A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicroService.Models", "MicroService.Models\MicroService.Models.csproj", "{2C2A437E-6361-4CF8-B362-D418BACBD95A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroService.Services.Tests", "MicroService.Services.Tests\MicroService.Services.Tests.csproj", "{BA383B5D-0733-464F-914F-55DFC10F73EF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{2C2A437E-6361-4CF8-B362-D418BACBD95A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C2A437E-6361-4CF8-B362-D418BACBD95A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2C2A437E-6361-4CF8-B362-D418BACBD95A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA383B5D-0733-464F-914F-55DFC10F73EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA383B5D-0733-464F-914F-55DFC10F73EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA383B5D-0733-464F-914F-55DFC10F73EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA383B5D-0733-464F-914F-55DFC10F73EF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

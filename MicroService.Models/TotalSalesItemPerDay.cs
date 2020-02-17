@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Runtime.Serialization;
-using System.Text;
 
 namespace MicroService.Models
 {
@@ -9,7 +7,7 @@ namespace MicroService.Models
     /// Number of sales of a given day
     /// </summary>
     [DataContract]
-    public class TotalSalesPerDay
+    public class TotalSalesItemPerDay
     {
         /// <summary>
         /// Date of the sales
