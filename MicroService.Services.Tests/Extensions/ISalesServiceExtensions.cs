@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -48,7 +46,7 @@ namespace MicroService.Services.Tests.Extensions
                 }).OrderBy(item => item.SalesPrice).ThenBy(item => item.ArticleNumber).ThenBy(item => item.DateTime);
 
             var tasks = (
-                from item in items 
+                from item in items
                 select service.AddSalesItemAsync(item, cancellationToken));
 
             await Task.WhenAll(tasks);

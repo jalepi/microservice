@@ -1,8 +1,7 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MicroService.Services.Tests.Extensions;
-using System.Threading;
-using System.Threading.Tasks;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace MicroService.Services.Tests
 {
@@ -34,7 +33,7 @@ namespace MicroService.Services.Tests
             await service.ApplySomeFixturesAsync(
                 itemsPerDay: 500,
                 daysCount: 1,
-                articleNumbersCount: 100, 
+                articleNumbersCount: 100,
                 salesPricesCount: 10,
                 cancellationToken: default);
 
