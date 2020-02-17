@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MicroService.Models\MicroService.Models.csproj" />
+    <ProjectReference Include="..\MicroService.Services\MicroService.Services.csproj" />
+  </ItemGroup>
+
+
+</Project>
