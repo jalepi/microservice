@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -16,35 +16,78 @@ namespace MicroService.Api.V1.Controllers
         }
 
         [HttpPost(Routes.Sales.PostItem)]
-        [Produces(typeof(string))]
-        public async Task<IActionResult> PostItem([FromBody] Models.SalesItem salesItem, CancellationToken cancellationToken)
+        [Produces(typeof(Schema.UpdateSalesItem))]
+        public async Task<IActionResult> PostItem([FromBody] Schema.CreateSalesItem request, CancellationToken cancellationToken)
         {
-            var id = await this._salesService.AddSalesItemAsync(salesItem, cancellationToken);
-            return Ok(id);
+            var model = new Models.SalesItem
+            {
+                ArticleNumber = request.ArticleNumber,
+                DateTime = request.DateTime,
+                SalesPrice = request.SalesPrice,
+            };
+
+            var id = await this._salesService.AddSalesItemAsync(model, cancellationToken);
+
+            var response = new Schema.UpdateSalesItem
+            {
+                Id = id,
+                ArticleNumber = model.ArticleNumber,
+                DateTime = model.DateTime,
+                SalesPrice = model.SalesPrice,
+            };
+
+            return Ok(response);
         }
 
         [HttpGet(Routes.Sales.GetTotalRevenuesPerDay)]
-        [Produces(typeof(Models.TotalRevenuePerDay[]))]
+        [Produces(typeof(Schema.TotalRevenuePerDay[]))]
         public async Task<IActionResult> GetTotalRevenuesPerDay(CancellationToken cancellationToken)
         {
-            var query = await this._salesService.GetTotalRevenuesPerDayAsync(cancellationToken);
-            return Ok(query);
+            var models = await this._salesService.GetTotalRevenuesPerDayAsync(cancellationToken);
+
+            var response = (
+                from model in models
+                select new Schema.TotalRevenuePerDay
+                {
+                    Date = model.Date,
+                    Value = model.Value,
+                });
+
+            return Ok(response);
         }
 
         [HttpGet(Routes.Sales.GetTotalRevenuesPerSalesItem)]
-        [Produces(typeof(Models.TotalRevenuePerSalesItem[]))]
+        [Produces(typeof(Schema.TotalRevenuePerSalesItem[]))]
         public async Task<IActionResult> GetTotalRevenuesPerSalesItem(CancellationToken cancellationToken)
         {
-            var query = await this._salesService.GetTotalRevenuesPerSalesItemAsync(cancellationToken);
-            return Ok(query);
+            var models = await this._salesService.GetTotalRevenuesPerSalesItemAsync(cancellationToken);
+
+            var response = (
+                from model in models
+                select new Schema.TotalRevenuePerSalesItem
+                {
+                    ArticleNumber = model.ArticleNumber,
+                    Value = model.Value,
+                });
+
+            return Ok(response);
         }
 
         [HttpGet(Routes.Sales.GetTotalSalesItemsPerDay)]
-        [Produces(typeof(Models.TotalSalesItemPerDay[]))]
+        [Produces(typeof(Schema.TotalSalesItemPerDay[]))]
         public async Task<IActionResult> GetTotalSalesItemsPerDay(CancellationToken cancellationToken)
         {
-            var query = await this._salesService.GetTotalSalesItemsPerDayAsync(cancellationToken);
-            return Ok(query);
+            var models = await this._salesService.GetTotalSalesItemsPerDayAsync(cancellationToken);
+
+            var response = (
+                from model in models
+                select new Schema.TotalSalesItemPerDay
+                {
+                    Date = model.Date,
+                    Count = model.Count,
+                });
+
+            return Ok(models);
         }
     }
 }
