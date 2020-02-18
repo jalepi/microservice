@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace MicroService.Api.V1
+﻿namespace MicroService.Api.V1
 {
     static public class Routes
     {
