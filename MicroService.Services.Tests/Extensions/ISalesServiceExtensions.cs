@@ -9,12 +9,9 @@ namespace MicroService.Services.Tests.Extensions
     {
         static public async Task CanCallAllGetMethodsWithoutExceptionsAsync(this ISalesService service, CancellationToken cancellationToken)
         {
-            var result = new
-            {
-                TotalRevenuesPerDay = (await service.GetTotalRevenuesPerDayAsync(cancellationToken)).ToArray(),
-                TotalRevenuesPerSalesItem = (await service.GetTotalRevenuesPerSalesItemAsync(cancellationToken)).ToArray(),
-                TotalSalesItemsPerDay = (await service.GetTotalSalesItemsPerDayAsync(cancellationToken)).ToArray(),
-            };
+            _ = (await service.GetTotalRevenuesPerDayAsync(cancellationToken)).ToArray();
+            _ = (await service.GetTotalRevenuesPerSalesItemAsync(cancellationToken)).ToArray();
+            _ = (await service.GetTotalSalesItemsPerDayAsync(cancellationToken)).ToArray();
         }
 
         static public async Task ApplySomeFixturesAsync(this ISalesService service, int itemsPerDay, int daysCount, int articleNumbersCount, int salesPricesCount, CancellationToken cancellationToken = default)

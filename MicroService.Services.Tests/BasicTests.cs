@@ -8,12 +8,6 @@ namespace MicroService.Services.Tests
     [TestClass]
     public class BasicTests
     {
-        ISalesService[] implementations = new ISalesService[]
-        {
-            new ConsolidatedInMemorySalesService(),
-            new OnTheFlyInMemorySalesService(),
-        };
-
         [TestMethod]
         public async Task ConsolidatedInMemory_can_call_get_methods_without_exceptions()
         {

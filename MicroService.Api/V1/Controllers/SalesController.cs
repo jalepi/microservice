@@ -8,7 +8,7 @@ namespace MicroService.Api.V1.Controllers
     [ApiController]
     public class SalesController : ControllerBase
     {
-        private Services.ISalesService _salesService;
+        private readonly Services.ISalesService _salesService;
 
         public SalesController(Services.ISalesService salesService)
         {
