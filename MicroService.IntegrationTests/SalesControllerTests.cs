@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc.Testing;
-using Microsoft.AspNetCore.Http.Extensions;
 using System;
 using System.Net.Http;
 using System.Text;
@@ -27,6 +26,7 @@ namespace MicroService.IntegrationTests
                 DateTime = DateTime.Now,
                 SalesPrice = 100.0M,
             };
+
             var requestJson = Newtonsoft.Json.JsonConvert.SerializeObject(requestValue);
             var httpContent = new StringContent(requestJson, Encoding.UTF8, "application/json");
             var response = await client.PostAsync(Api.V1.Routes.Sales.PostItem, httpContent);
@@ -40,8 +40,20 @@ namespace MicroService.IntegrationTests
             Assert.Equal(requestValue.ArticleNumber, responseValue.ArticleNumber);
             Assert.Equal(requestValue.DateTime, responseValue.DateTime);
             Assert.Equal(requestValue.SalesPrice, responseValue.SalesPrice);
+        }
 
+        [Fact]
+        public async Task Http_get_methods_response_status_should_be_ok()
+        {
+            HttpResponseMessage response;
+            response = await client.GetAsync(Api.V1.Routes.Sales.GetTotalRevenuesPerDay);
+            Assert.True(response.IsSuccessStatusCode);
 
+            response = await client.GetAsync(Api.V1.Routes.Sales.GetTotalRevenuesPerSalesItem);
+            Assert.True(response.IsSuccessStatusCode);
+
+            response = await client.GetAsync(Api.V1.Routes.Sales.GetTotalSalesItemsPerDay);
+            Assert.True(response.IsSuccessStatusCode);
         }
     }
 }
