@@ -20,14 +20,14 @@ namespace MicroService.Services.Tests
             await Implementations_can_call_get_methods_without_exceptions(new OnTheFlyInMemorySalesService());
         }
 
-        public async Task Implementations_can_call_get_methods_without_exceptions(ISalesService service)
+        static private async Task Implementations_can_call_get_methods_without_exceptions(ISalesService service)
         {
             await service.CanCallAllGetMethodsWithoutExceptionsAsync(default);
 
             await service.ApplySomeFixturesAsync(
-                itemsPerDay: 500,
+                itemsPerDay: 100,
                 daysCount: 1,
-                articleNumbersCount: 100,
+                articleNumbersCount: 25,
                 salesPricesCount: 10,
                 cancellationToken: default);
 
@@ -46,13 +46,13 @@ namespace MicroService.Services.Tests
             await Implementations_fixtures_should_consolidate_correctly(new OnTheFlyInMemorySalesService());
         }
 
-        public async Task Implementations_fixtures_should_consolidate_correctly(ISalesService service)
+        static private async Task Implementations_fixtures_should_consolidate_correctly(ISalesService service)
         {
             await service.CanCallAllGetMethodsWithoutExceptionsAsync(default);
 
-            var itemsPerDay = 500;
+            var itemsPerDay = 100;
             var daysCount = 5;
-            var articleNumbersCount = 100;
+            var articleNumbersCount = 25;
             var salesPricesCount = 10;
 
             await service.ApplySomeFixturesAsync(

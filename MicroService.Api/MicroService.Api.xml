@@ -1,0 +1,199 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MicroService.Api</name>
+    </assembly>
+    <members>
+        <member name="T:MicroService.Api.Startup">
+            <summary>
+            Configures Application and Services
+            </summary>
+        </member>
+        <member name="M:MicroService.Api.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Constructs Startup instance
+            </summary>
+            <param name="configuration">Application Configuration Settings</param>
+        </member>
+        <member name="M:MicroService.Api.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Configures Services and Dependency Injection
+            </summary>
+            <param name="services">Service Collection</param>
+        </member>
+        <member name="M:MicroService.Api.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            Configures the Application Request Pipelines
+            </summary>
+            <param name="app">Application Builder</param>
+            <param name="env">WebHost Environment</param>
+        </member>
+        <member name="T:MicroService.Api.V1.Controllers.SalesController">
+            <summary>
+            Provides HTTP Api's for Sales
+            </summary>
+        </member>
+        <member name="M:MicroService.Api.V1.Controllers.SalesController.#ctor(MicroService.Services.ISalesService)">
+            <summary>
+            Constructs Sales Controller instance
+            </summary>
+            <param name="salesService">Sales Service</param>
+        </member>
+        <member name="M:MicroService.Api.V1.Controllers.SalesController.PostItem(MicroService.Api.V1.Schema.CreateSalesItem,System.Threading.CancellationToken)">
+            <summary>
+            Posts a new Sales Item
+            </summary>
+            <param name="request">Sales Item to be created</param>
+            <param name="cancellationToken">Token to cancel async operation</param>
+            <returns>Created Sales Item</returns>
+        </member>
+        <member name="M:MicroService.Api.V1.Controllers.SalesController.GetTotalRevenuesPerDay(System.Threading.CancellationToken)">
+            <summary>
+            Gets a list of Total Revenue per day
+            </summary>
+            <param name="cancellationToken">Token to cancel async operation</param>
+            <returns>List of Total Revenue per day</returns>
+        </member>
+        <member name="M:MicroService.Api.V1.Controllers.SalesController.GetTotalRevenuesPerSalesItem(System.Threading.CancellationToken)">
+            <summary>
+            Gets a list of Revenue per Sales Item
+            </summary>
+            <param name="cancellationToken">Token to cancel async operation</param>
+            <returns>List of Revenue per Sales Item</returns>
+        </member>
+        <member name="M:MicroService.Api.V1.Controllers.SalesController.GetTotalSalesItemsPerDay(System.Threading.CancellationToken)">
+            <summary>
+            Gets a list of Total Sales Items per day
+            </summary>
+            <param name="cancellationToken">Token to cancel async operation</param>
+            <returns>List of Total Sales Items per day</returns>
+        </member>
+        <member name="T:MicroService.Api.V1.Routes">
+            <summary>
+            Specification of routes of API version 1
+            </summary>
+        </member>
+        <member name="F:MicroService.Api.V1.Routes.Base">
+            <summary>
+            Base route for ALL version 1 routes
+            </summary>
+        </member>
+        <member name="T:MicroService.Api.V1.Routes.Sales">
+            <summary>
+            Sales routes @refer=""
+            </summary>
+        </member>
+        <member name="F:MicroService.Api.V1.Routes.Sales.PostItem">
+            <summary>
+            Route for posting Sales Item. <see cref="M:MicroService.Api.V1.Controllers.SalesController.PostItem(MicroService.Api.V1.Schema.CreateSalesItem,System.Threading.CancellationToken)"/>
+            </summary>
+        </member>
+        <member name="F:MicroService.Api.V1.Routes.Sales.GetTotalRevenuesPerDay">
+            <summary>
+            Route for getting Total Revenues per Day. <see cref="M:MicroService.Api.V1.Controllers.SalesController.GetTotalRevenuesPerDay(System.Threading.CancellationToken)"/>
+            </summary>
+        </member>
+        <member name="F:MicroService.Api.V1.Routes.Sales.GetTotalRevenuesPerSalesItem">
+            <summary>
+            Route for getting Total Revenues per Sales Item. <see cref="M:MicroService.Api.V1.Controllers.SalesController.GetTotalRevenuesPerSalesItem(System.Threading.CancellationToken)"/>
+            </summary>
+        </member>
+        <member name="F:MicroService.Api.V1.Routes.Sales.GetTotalSalesItemsPerDay">
+            <summary>
+            Route for getting Total Sales Items per Day. <see cref="M:MicroService.Api.V1.Controllers.SalesController.GetTotalSalesItemsPerDay(System.Threading.CancellationToken)"/>
+            </summary>
+        </member>
+        <member name="T:MicroService.Api.V1.Schema.CreateSalesItem">
+            <summary>
+            To post a sales date throughout the API
+            </summary>
+        </member>
+        <member name="P:MicroService.Api.V1.Schema.CreateSalesItem.DateTime">
+            <summary>
+            Date and Time of the Sale
+            </summary>
+        </member>
+        <member name="P:MicroService.Api.V1.Schema.CreateSalesItem.ArticleNumber">
+            <summary>
+            Article Number of the Sale
+            Alphanumeric up to 32 characters
+            </summary>
+        </member>
+        <member name="P:MicroService.Api.V1.Schema.CreateSalesItem.SalesPrice">
+            <summary>
+            Price of the Sale
+            </summary>
+        </member>
+        <member name="T:MicroService.Api.V1.Schema.TotalRevenuePerDay">
+            <summary>
+            Total Revenue of the day
+            </summary>
+        </member>
+        <member name="P:MicroService.Api.V1.Schema.TotalRevenuePerDay.Date">
+            <summary>
+            Date of the sales revenue
+            </summary>
+        </member>
+        <member name="P:MicroService.Api.V1.Schema.TotalRevenuePerDay.Value">
+            <summary>
+            Revenue total value of the day
+            </summary>
+        </member>
+        <member name="T:MicroService.Api.V1.Schema.TotalRevenuePerSalesItem">
+            <summary>
+            Total Revenue of a sales item
+            </summary>
+        </member>
+        <member name="P:MicroService.Api.V1.Schema.TotalRevenuePerSalesItem.ArticleNumber">
+            <summary>
+            Article number of the sales item
+            </summary>
+        </member>
+        <member name="P:MicroService.Api.V1.Schema.TotalRevenuePerSalesItem.Value">
+            <summary>
+            Total Revenue of the sales item
+            </summary>
+        </member>
+        <member name="T:MicroService.Api.V1.Schema.TotalSalesItemPerDay">
+            <summary>
+            Number of sales of a given day
+            </summary>
+        </member>
+        <member name="P:MicroService.Api.V1.Schema.TotalSalesItemPerDay.Date">
+            <summary>
+            Date of the sales
+            </summary>
+        </member>
+        <member name="P:MicroService.Api.V1.Schema.TotalSalesItemPerDay.Count">
+            <summary>
+            Total number of items sold in the day
+            </summary>
+        </member>
+        <member name="T:MicroService.Api.V1.Schema.UpdateSalesItem">
+            <summary>
+            To post a sales date throughout the API
+            </summary>
+        </member>
+        <member name="P:MicroService.Api.V1.Schema.UpdateSalesItem.Id">
+            <summary>
+            Id of the Sale
+            </summary>
+        </member>
+        <member name="P:MicroService.Api.V1.Schema.UpdateSalesItem.DateTime">
+            <summary>
+            Date and Time of the Sale
+            </summary>
+        </member>
+        <member name="P:MicroService.Api.V1.Schema.UpdateSalesItem.ArticleNumber">
+            <summary>
+            Article Number of the Sale
+            Alphanumeric up to 32 characters
+            </summary>
+        </member>
+        <member name="P:MicroService.Api.V1.Schema.UpdateSalesItem.SalesPrice">
+            <summary>
+            Price of the Sale
+            </summary>
+        </member>
+    </members>
+</doc>
